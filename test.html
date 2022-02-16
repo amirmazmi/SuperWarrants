@@ -1,12 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <script src="https://unpkg.com/@ungap/custom-elements-builtin"></script>
-    <script type="module" src="https://unpkg.com/x-frame-bypass"></script>
-</head>
-<body>
-    <iframe class="frame" is="x-frame-bypass" src="https://raw.githubusercontent.com/amirmazmi/SuperWarrants/main/2022-02-16%20BYD.html" height=1000 width=1000></iframe>
-</body>
-<script>
-</script>
+    <head>
+        <!--
+        -->
+        <script src="https://unpkg.com/@ungap/custom-elements-builtin"></script>
+        <script type="module" src="https://unpkg.com/x-frame-bypass"></script>
+    </head>
+    <body>
+        <!--
+        <embed type="text/html" src="https://raw.githubusercontent.com/amirmazmi/SuperWarrants/main/2022-02-16%20BYD.html">
+
+        <iframe src="https://raw.githubusercontent.com/amirmazmi/SuperWarrants/main/2022-02-16%20BYD.html"></iframe>
+
+        <div w3-include-html="https://raw.githubusercontent.com/amirmazmi/SuperWarrants/main/2022-02-16%20BYD.html"></div>
+
+        -->
+
+        <iframe class="frame" is="x-frame-bypass" src="https://raw.githubusercontent.com/amirmazmi/SuperWarrants/main/2022-02-16%20BYD.html" height=600 width=600></iframe>
+
+
+    </body>
+
+
+<!--
+    <script>
+        /* for w3-include-html */
+
+        function includeHTML() {
+          var z, i, elmnt, file, xhttp;
+          /* Loop through a collection of all HTML elements: */
+          z = document.getElementsByTagName("*");
+          for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            /*search for elements with a certain atrribute:*/
+            file = elmnt.getAttribute("w3-include-html");
+            if (file) {
+              /* Make an HTTP request using the attribute value as the file name: */
+              xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                  if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                  /* Remove the attribute, and call this function once more: */
+                  elmnt.removeAttribute("w3-include-html");
+                  includeHTML();
+                }
+              }
+              xhttp.open("GET", file, true);
+              xhttp.send();
+              /* Exit the function: */
+              return;
+            }
+          }
+        }
+
+        includeHTML();
+
+    </script>
+
+-->
+
+
 </html>
+
+
+
+
+<!--
+
+<html>
+    <iframe src="https://raw.githubusercontent.com/amirmazmi/SuperWarrants/main/2022-02-16%20BYD.html" allowfullscreen="allowfullscreen"></iframe>
+    <embed type="text/html" src="https://raw.githubusercontent.com/amirmazmi/SuperWarrants/main/2022-02-16%20BYD.html">
+</html>
+
+
+
+https://github.com/amirmazmi/SuperWarrants/blob/main/2022-02-16%20BYD.html
+
+https://raw.githubusercontent.com/amirmazmi/SuperWarrants/main/2022-02-16%20BYD.html
+-->
