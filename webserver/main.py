@@ -3,21 +3,24 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-
+import os
 
 app = FastAPI( openapi_url=None, docs_url=None)
 templates = Jinja2Templates(directory="templates")
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
 
 @app.get("/")
 async def root(request: Request):
-            return templates.TemplateResponse("access_denied.html", {"request": request})
+            ls_files = sorted(os.listdir("static"))
+            return templates.TemplateResponse("home.html", {"request": request, "files": ls_files})
 
 
-#@app.get("/wawa")
-#async def plots(request: Request):
-            #fname = "2022-03-25_HSI_warrants.html"
-            #return templates.TemplateResponse("plots.html", {"request": request, "fname": fname})
+@app.get("/{fname}")
+async def plots(request: Request, fname: str):
+            return templates.TemplateResponse("plots.html", {"request": request, "fname": fname})
 
 
 @app.exception_handler(404)
@@ -32,8 +35,8 @@ async def exception_handler(request: Request, exc: HTTPException):
 
 
 if __name__ == '__main__':
-    #uvicorn.run( "main:app", host="0.0.0.0", port=8000, reload=True)
-    uvicorn.run( "main:app", host="0.0.0.0", port=8000)
+    uvicorn.run( "main:app", host="0.0.0.0", port=9000, reload=True)
+    #uvicorn.run( "main:app", host="0.0.0.0", port=9000)
 
 
 
