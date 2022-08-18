@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <div class="titlebar" style="font-size:100%; padding-bottom: 5px; font-weight: bold;">
+        <a href="/">Home</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <!-- style="border:2px solid black;" -->
+    <iframe id="igraph" scrolling="no"  style="border:none" seamless="seamless" src="static/{{ fname }}" height="92%" width="100%"></iframe>
+{% endblock %}
+
