@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <div class="titlebar"><h3>Warrant Payoff Charts</h3></div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <ul id="navigation">
+    {% for item in files %}
+        <li><a href="{{ item }}">{{ item[11:-5] }}</a></li>
+    {% endfor %}
+    </ul>
+    <style>
+    ul li {
+      list-style-type: none;
+      margin: 0;
+      padding: 5 0 0 90;
+      color: red;
+    }
+    </style>
+
+{% endblock %}
+
