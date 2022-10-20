@@ -6,6 +6,7 @@ from fastapi.staticfiles import StaticFiles
 import os
 
 #--- logging
+# https://github.com/tiangolo/uvicorn-gunicorn-fastapi-docker/issues/19
 import logging
 from fastapi.logger import logger as fastapi_logger
 
