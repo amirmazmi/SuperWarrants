@@ -3,6 +3,7 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.gzip import GZipMiddleware
 import os
 
 #--- logging
@@ -25,6 +26,7 @@ else:
 
 #----
 app = FastAPI( openapi_url=None, docs_url=None)
+app.add_middleware(GZipMiddleware)
 templates = Jinja2Templates(directory="templates")
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
